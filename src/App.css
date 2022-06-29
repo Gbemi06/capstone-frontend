@@ -36,3 +36,46 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  height: 80vh !important;
+}
+.signup {
+  position: relative;
+  display: flex;
+}
+.signup-text {
+  color: blue;
+  text-transform: uppercase;
+  display: flex;
+  font-size: 1.8rem;
+  font-weight: 500;
+  justify-content: center;
+  margin-bottom: 34px;
+}
+.form-sign {
+  margin-left: 15rem;
+  margin-top: 8rem;
+  width: 100%;
+
+  font-weight: 500;
+}
+.sign-input {
+  padding: 1.4rem;
+  border-radius: 2rem;
+}
+.sign_button {
+  padding: 1rem 2rem 1rem 2rem;
+  margin-left: 20px;
+  margin-right: 2rem;
+  font-weight: 500;
+  margin-top: 10px;
+  font-size: large;
+}
+.log_button {
+  padding: 1rem 2rem 1rem 2rem;
+  margin-left: 0.9rem;
+  font-weight: 500;
+  margin-top: 10px;
+  font-size: medium;
+}
