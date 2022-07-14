@@ -7,13 +7,22 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
+import { useContext } from "react";
+import AuthContext from "../context/authProvider";
 import { RegistrationInterface } from "../types/RegistrationInterface";
+import { useLocation, Link } from "react-router-dom";
 
 interface DataProps {
-  data: any;
+  currentUser: RegistrationInterface | null;
 }
 
-function MyNavBar({ data }: DataProps) {
+const logout = () => {
+  localStorage.removeItem("jwtToken");
+};
+
+function MyNavBar({ currentUser }: DataProps) {
+  // const { currentUser }  = useContext(AuthContext)
+  const location = useLocation();
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -21,13 +30,31 @@ function MyNavBar({ data }: DataProps) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+            <div
+              className={
+                location.pathname === "/" ? "nav-link active" : "nav-link"
+              }
+            >
+              Home
+            </div>
+            <Link to="/Admin">
+              <div
+                className={
+                  location.pathname === "/courses"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                Courses
+              </div>
+            </Link>
           </Nav>
-          <NavDropdown title="Account" id="basic-nav-dropdown">
+          <NavDropdown title="Menu" id="basic-nav-dropdown">
             <NavDropdown.Item href="/register">Register</NavDropdown.Item>
             <NavDropdown.Item href="/login">LogIn</NavDropdown.Item>
-            <NavDropdown.Item href="/">LogOut</NavDropdown.Item>
+            <NavDropdown.Item onClick={logout} href="/">
+              LogOut
+            </NavDropdown.Item>
             <NavDropdown.Divider />
           </NavDropdown>
           <Form inline>
@@ -37,7 +64,7 @@ function MyNavBar({ data }: DataProps) {
           <Navbar.Text className="mx-2">
             Signed in as:{" "}
             <a href="#login">
-              {data?.firstName} {""} {data?.lastName}
+              {currentUser?.firstName} {""} {currentUser?.lastName}
             </a>
           </Navbar.Text>
         </Navbar.Collapse>

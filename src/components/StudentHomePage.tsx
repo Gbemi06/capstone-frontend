@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FormEvent } from "react";
 import MyCarousel from "./MyCarousel";
 import MyNavBar from "./MyNavBar";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +11,7 @@ function StudentHomePage() {
   const [currentUser, setCurrentUser] = useState<RegistrationInterface | null>(
     null
   );
-  // const [currentChat, setCurrentChat] = useState(undefined);
+
   const [isLoaded, setIsLoaded] = useState(false);
   // ==========================================
   // useEffect(() => {
@@ -25,6 +25,7 @@ function StudentHomePage() {
   useEffect(() => {
     fetchUserData();
   }, []);
+
   // ==================FETCH========================
   const fetchUserData = async () => {
     const response = await fetch("http://localhost:4002/users/register/me", {
@@ -41,13 +42,10 @@ function StudentHomePage() {
     }
   };
 
-  // ==========================================
-  // const handleChatChange = (chat) => {
-  //   setCurrentChat(chat);
-  // };
   return (
     <div>
-      <MyNavBar data={currentUser} />
+      <MyNavBar currentUser={currentUser} />
+      <div>You are logged in as a {currentUser?.role}</div>
       <MyCarousel />
     </div>
   );

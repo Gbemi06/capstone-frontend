@@ -37,6 +37,19 @@
   }
 }
 
+/* Sidebar css */
+
+.sideBar-main {
+  background-color: rgb(65, 60, 59);
+  color: white;
+  padding-right: 10px;
+}
+
+.sideBar-link {
+  padding: 10px;
+  margin-top: 50px;
+}
+
 .container {
   height: 80vh !important;
 }

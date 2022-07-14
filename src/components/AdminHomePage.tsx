@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { RegistrationInterface } from "../types/RegistrationInterface";
 import MyNavBar from "./MyNavBar";
+import PostCourse from "./PostCourse";
 
 function AdminHomePage() {
   const navigate = useNavigate();
@@ -10,16 +11,6 @@ function AdminHomePage() {
   const [currentUser, setCurrentUser] = useState<RegistrationInterface | null>(
     null
   );
-  // const [currentChat, setCurrentChat] = useState(undefined);
-  const [isLoaded, setIsLoaded] = useState(false);
-  // ==========================================
-  // useEffect(() => {
-  //   if (!localStorage.getItem("jwtToken")) {
-  //     navigate("/");
-  //   } else {
-  //     setIsLoaded(true);
-  //   }
-  // }, []);
 
   useEffect(() => {
     fetchUserData();
@@ -42,7 +33,8 @@ function AdminHomePage() {
   return (
     <div>
       AdminHomePage
-      <MyNavBar data={currentUser} />
+      <MyNavBar currentUser={currentUser} />
+      <div>You are logged in as a {currentUser?.role}</div>
     </div>
   );
 }

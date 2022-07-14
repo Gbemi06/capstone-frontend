@@ -2,24 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { RegistrationInterface } from "../types/RegistrationInterface";
 import MyNavBar from "./MyNavBar";
+import PostCourse from "./PostCourse";
 
 function TeachersHomePage() {
-  const navigate = useNavigate;
-  // const [select, setSelect] = useState(false);
+  // const navigate = useNavigate;
 
   const [currentUser, setCurrentUser] = useState<RegistrationInterface | null>(
     null
   );
-  // const [currentChat, setCurrentChat] = useState(undefined);
-  const [isLoaded, setIsLoaded] = useState(false);
-  // ==========================================
-  // useEffect(() => {
-  //   if (!localStorage.getItem("jwtToken")) {
-  //     navigate("/");
-  //   } else {
-  //     setIsLoaded(true);
-  //   }
-  // }, []);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetchUserData();
@@ -41,8 +33,10 @@ function TeachersHomePage() {
   };
   return (
     <div>
-      <MyNavBar data={currentUser} />
+      <MyNavBar currentUser={currentUser} />
+      <div>You are logged in as a {currentUser?.role}</div>
       TeachersHomePage
+      <PostCourse />
     </div>
   );
 }
