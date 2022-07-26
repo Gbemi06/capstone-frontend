@@ -36,13 +36,18 @@ function App() {
               <Route path="/login" element={<LoginPage />} />
 
               {/* protected routes */}
-              <Route element={<RequireAuth roles={["Admin"]} />}>
+              <Route element={<RequireAuth AllowedRoles={["Admin"]} />}>
                 <Route path="/Admin" element={<AdminHomePage />} />
+                <Route path="/settings" element={<Settings />} />
               </Route>
-              <Route element={<RequireAuth roles={["Admin", "Teacher"]} />}>
+              <Route
+                element={<RequireAuth AllowedRoles={["Admin", "Teacher"]} />}
+              >
                 <Route path="/Teacher" element={<TeachersHomePage />} />
               </Route>
-              <Route element={<RequireAuth roles={["Admin", "Student"]} />}>
+              <Route
+                element={<RequireAuth AllowedRoles={["Admin", "Student"]} />}
+              >
                 <Route path="/Student" element={<StudentHomePage />} />
               </Route>
 
@@ -51,7 +56,6 @@ function App() {
               <Route path="/courses" element={<Courses />} />
               <Route path="/study-programme" element={<StudyProgramme />} />
               <Route path="/timetable" element={<Timetable />} />
-              <Route path="/settings" element={<Settings />} />
 
               <Route path="/unauthorized" element={<Unauthorized />} />
               <Route path="*" element={<NotFound />} />

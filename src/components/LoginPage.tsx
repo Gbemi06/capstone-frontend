@@ -8,7 +8,7 @@ import React, {
 import { Button, Form, Container, Col, Row } from "react-bootstrap";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import AuthContext from "../context/authProvider";
-// import useAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import { LoginInterface } from "../types/RegistrationInterface";
 
 const initLogin = {
@@ -17,23 +17,34 @@ const initLogin = {
 };
 
 const LoginPage = () => {
-  const { setAuth }: any = useContext(AuthContext);
+  // const { setAuth } = useContext(AuthContext);
+  const { setAuth } = useAuth();
   const navigate = useNavigate();
-
   const location = useLocation();
-  const from = location.pathname || "/";
-  const userRef = useRef();
-  const errorRef = useRef();
+  const from = location.state || { from: { pathname: "/" } };
+  // const [loginData, setLoginData] = useState<LoginInterface>(initLogin);
+  const [error, setError] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const passwordRef = useRef<HTMLInputElement>(null);
+
+  //console.log(myContext?.auth)
+  // const navigate = useNavigate();
+
+  // const location = useLocation();
+  // const from = location.pathname || "/";
+  // const userRef = useRef();
+  // const errorRef = useRef();
 
   const [login, setLogin] = useState<LoginInterface>(initLogin);
-  const [errMessage, setErrorMessage] = useState("");
+  // const [errMessage, setErrorMessage] = useState("");
 
   // useEffect(() => {
   //   userRef.current.focus();
   // }, []);
 
   useEffect(() => {
-    setErrorMessage("");
+    setError("");
   }, [initLogin]);
 
   const handleSubmit = (e: FormEvent) => {
@@ -59,8 +70,7 @@ const LoginPage = () => {
         const accessToken = data?.token;
         const role = data?.role;
         setAuth({ login, role, accessToken });
-        console.log(accessToken);
-        console.log(AuthenticatorAttestationResponse);
+        // navigate(from);
         navigate(`/${data.role}`);
       } else {
         alert("wrong username or password ");
@@ -75,10 +85,10 @@ const LoginPage = () => {
       <div>
         <p
           // ref={errorRef}
-          className={errMessage ? "errmsg" : "offscreen"}
+          className={error ? "errmsg" : "offscreen"}
           aria-live="assertive"
         >
-          {errMessage}
+          {error}
         </p>
       </div>
       {/* <div className="container"> */}

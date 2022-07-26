@@ -1,9 +1,30 @@
-import { createContext, useState } from "react";
+import { createContext, useState, ReactNode } from "react";
+import {
+  AuthContextInterface,
+  AuthInterface,
+} from "../types/RegistrationInterface";
 
-const AuthContext = createContext({});
+const AuthContext = createContext<AuthContextInterface>({
+  auth: {
+    login: {
+      username: "",
+      password: "",
+    },
+    role: "",
+    accessToken: "",
+  },
+  setAuth: () => {},
+});
 
-export const AuthProvider = ({ children }: any) => {
-  const [auth, setAuth] = useState({});
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
+  const [auth, setAuth] = useState<AuthInterface>({
+    login: {
+      username: "",
+      password: "",
+    },
+    role: "",
+    accessToken: "",
+  });
   console.log(auth);
 
   return (

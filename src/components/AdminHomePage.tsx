@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { RegistrationInterface } from "../types/RegistrationInterface";
 import MyNavBar from "./MyNavBar";
@@ -32,9 +33,47 @@ function AdminHomePage() {
   };
   return (
     <div>
-      AdminHomePage
       <MyNavBar currentUser={currentUser} />
-      <div>You are logged in as a {currentUser?.role}</div>
+      <Container fluid>
+        <div>
+          AdminHomePage
+          <div>You are logged in as a {currentUser?.role}</div>
+        </div>
+        <Row>
+          <Col md={3}>
+            <div>
+              <h3>Course setting</h3>
+              <div>
+                <button onClick={() => navigate("/courses")}>Courses</button>
+              </div>
+            </div>
+          </Col>
+          <Col md={4}>
+            <div>
+              <h3>Carousel setting</h3>
+              <div>
+                <button onClick={() => navigate("/carousel")}>Carousel</button>
+              </div>
+            </div>
+          </Col>
+          <Col md={4}>
+            <div>
+              <h3>User setting</h3>
+              <div>
+                <button onClick={() => navigate("/user")}>User</button>
+              </div>
+            </div>
+          </Col>
+          <Col md={4}>
+            <div>
+              <h3> setting</h3>
+              <div>
+                <button onClick={() => navigate("/settings")}>Courses</button>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

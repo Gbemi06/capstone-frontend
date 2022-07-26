@@ -23,7 +23,7 @@ function MyCarousel() {
     // //  console.log(inpFile?.files[0]);
 
     try {
-      const response = await fetch("http://localhost:4002/admin/carousel", {
+      const response = await fetch("http://localhost:4002/carousel", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -40,14 +40,13 @@ function MyCarousel() {
     } catch (error) {
       console.log(error);
     }
-    console.log("CAROUSEL", carousel[0].path);
   };
 
   return (
     <Carousel activeIndex={index} onSelect={handleSelect}>
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className="d-block carousel-img"
           src={carousel[0]?.path}
           alt="First slide"
         />
@@ -58,7 +57,7 @@ function MyCarousel() {
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className="d-block carousel-img"
           src={carousel[1]?.path}
           alt="Second slide"
         />
@@ -70,7 +69,7 @@ function MyCarousel() {
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className="d-block carousel-img"
           src={carousel[2]?.path}
           alt="Third slide"
         />
