@@ -82,16 +82,6 @@ const LoginPage = () => {
 
   return (
     <>
-      <div>
-        <p
-          // ref={errorRef}
-          className={error ? "errmsg" : "offscreen"}
-          aria-live="assertive"
-        >
-          {error}
-        </p>
-      </div>
-      {/* <div className="container"> */}
       <Container className="login">
         <Row>
           <Col md={6} className=" my-5">

@@ -63,9 +63,9 @@ function MyNavBar({ currentUser }: DataProps) {
           </Form>
           <Navbar.Text className="mx-2">
             Signed in as:{" "}
-            <a href="#login">
+            <Link to="/profile">
               {currentUser?.firstName} {""} {currentUser?.lastName}
-            </a>
+            </Link>
           </Navbar.Text>
         </Navbar.Collapse>
       </Navbar>

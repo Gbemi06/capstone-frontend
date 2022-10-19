@@ -39,40 +39,78 @@ function AdminHomePage() {
           AdminHomePage
           <div>You are logged in as a {currentUser?.role}</div>
         </div>
-        <Row>
-          <Col md={3}>
-            <div>
-              <h3>Course setting</h3>
-              <div>
-                <button onClick={() => navigate("/courses")}>Courses</button>
-              </div>
-            </div>
-          </Col>
-          <Col md={4}>
-            <div>
-              <h3>Carousel setting</h3>
-              <div>
-                <button onClick={() => navigate("/carousel")}>Carousel</button>
-              </div>
-            </div>
-          </Col>
-          <Col md={4}>
-            <div>
-              <h3>User setting</h3>
-              <div>
-                <button onClick={() => navigate("/user")}>User</button>
-              </div>
-            </div>
-          </Col>
-          <Col md={4}>
-            <div>
-              <h3> setting</h3>
-              <div>
-                <button onClick={() => navigate("/settings")}>Courses</button>
-              </div>
-            </div>
-          </Col>
-        </Row>
+
+        <div>
+          <h3>Course setting</h3>
+          <div>
+            <button onClick={() => navigate("/coursesSetting")}>Courses</button>
+          </div>
+        </div>
+        <hr />
+        <div>
+          <h3>Carousel setting</h3>
+          <div>
+            <button onClick={() => navigate("/carousel")}>Carousel</button>
+          </div>
+        </div>
+        <hr />
+        <div>
+          <h3>User setting</h3>
+          <div>
+            <button onClick={() => navigate("/user")}>User</button>
+          </div>
+        </div>
+        <hr />
+        <div>
+          <h3> General Setting</h3>
+          <div>
+            <button onClick={() => navigate("/settings")}>Setting </button>
+          </div>
+        </div>
+        <hr />
+        <div>
+          <h3> Profile Setting</h3>
+          <div>
+            <button onClick={() => navigate("/profileSetting")}>Profile</button>
+          </div>
+        </div>
+        <hr />
+        <div>
+          <h3> Teachers Home Setting</h3>
+          <div>
+            <button onClick={() => navigate("/teacherHomeSetting")}>
+              Teachers Home Setting
+            </button>
+          </div>
+        </div>
+        <hr />
+        <div>
+          <h3> Timetable Setting</h3>
+          <div>
+            <button onClick={() => navigate("/timetableSetting")}>
+              Timetable Setting
+            </button>
+          </div>
+        </div>
+        <hr />
+        <div>
+          <h3> Study Programme Setting</h3>
+          <div>
+            <button onClick={() => navigate("/studyProgrammeSetting")}>
+              Study Programme
+            </button>
+          </div>
+        </div>
+        <hr />
+        <div>
+          <h3> Student Home Setting</h3>
+          <div>
+            <button onClick={() => navigate("/studentHomeSetting")}>
+              Student Home
+            </button>
+          </div>
+        </div>
+        <hr />
       </Container>
     </div>
   );

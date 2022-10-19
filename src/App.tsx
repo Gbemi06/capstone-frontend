@@ -18,6 +18,14 @@ import Courses from "./components/Courses";
 import StudyProgramme from "./components/StudyProgramme";
 import Timetable from "./components/Timetable";
 import Settings from "./components/Settings";
+import MyProfile from "./components/MyProfile";
+import TimetableSetting from "./components/TimetableSetting";
+import TeachersHomeSetting from "./components/TeachersHomeSetting";
+import StudentHomeSetting from "./components/StudentHomeSetting";
+import StudyProgrammeSetting from "./components/StudyProgrammeSetting";
+import ProfileSetting from "./components/ProfileSetting";
+import CoursesSetting from "./components/CoursesSetting";
+import CarouselSetting from "./components/CarouselSetting";
 
 function App() {
   return (
@@ -34,6 +42,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/register" element={<Registration />} />
               <Route path="/login" element={<LoginPage />} />
+              <Route path="/profile" element={<MyProfile />} />
 
               {/* protected routes */}
               <Route element={<RequireAuth AllowedRoles={["Admin"]} />}>
@@ -49,6 +58,41 @@ function App() {
                 element={<RequireAuth AllowedRoles={["Admin", "Student"]} />}
               >
                 <Route path="/Student" element={<StudentHomePage />} />
+              </Route>
+
+              {/* Admin protected routes */}
+              <Route element={<RequireAuth AllowedRoles={["Admin"]} />}>
+                <Route
+                  path="/teacherHomeSetting"
+                  element={<TimetableSetting />}
+                />
+              </Route>
+              <Route element={<RequireAuth AllowedRoles={["Admin"]} />}>
+                <Route
+                  path="/teacherHomeSetting"
+                  element={<TeachersHomeSetting />}
+                />
+              </Route>
+              <Route element={<RequireAuth AllowedRoles={["Admin"]} />}>
+                <Route
+                  path="/studentHomeSetting"
+                  element={<StudentHomeSetting />}
+                />
+              </Route>
+              <Route element={<RequireAuth AllowedRoles={["Admin"]} />}>
+                <Route
+                  path="/studyProgrammeSetting"
+                  element={<StudyProgrammeSetting />}
+                />
+              </Route>
+              <Route element={<RequireAuth AllowedRoles={["Admin"]} />}>
+                <Route path="/profileSetting" element={<ProfileSetting />} />
+              </Route>
+              <Route element={<RequireAuth AllowedRoles={["Admin"]} />}>
+                <Route path="/coursesSetting" element={<CoursesSetting />} />
+              </Route>
+              <Route element={<RequireAuth AllowedRoles={["Admin"]} />}>
+                <Route path="/carousel" element={<CarouselSetting />} />
               </Route>
 
               {/* sidebar route */}

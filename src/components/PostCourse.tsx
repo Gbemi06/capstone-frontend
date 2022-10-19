@@ -13,7 +13,6 @@ const initCourse = {
   term: "",
   year: "",
   instructor: "",
-  studentsList: "",
 };
 
 function PostCourse() {
@@ -35,18 +34,26 @@ function PostCourse() {
   // const [coursePost, setCoursePost] = useState<CourseInterface>(initCourse);
 
   const getCourses = async () => {
-    let response = await fetch("http://localhost:4002/courses", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
-      },
-      body: JSON.stringify(coursePost),
-    });
-    alert("Course Uploaded Successfully");
-    let data = await response.json();
-    console.log(data);
-    setCoursePost(data);
+    try {
+      let response = await fetch("http://localhost:4002/courses", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+        },
+        body: JSON.stringify(coursePost),
+      });
+      if (response.ok) {
+        alert("Course Uploaded Successfully");
+        let data = await response.json();
+        console.log(data);
+        setCoursePost(data);
+      } else {
+        alert("Error Uploading Course");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <Container className="login">

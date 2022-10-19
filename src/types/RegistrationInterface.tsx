@@ -8,6 +8,7 @@ export interface RegistrationInterface {
   password: string;
   confirmPassword: string;
   role: string;
+  profilePic?: string;
 }
 
 export interface LoginInterface {
@@ -41,5 +42,5 @@ export interface CourseInterface {
   term: string;
   year: string;
   instructor: string;
-  studentsList: string;
+  // studentsList: string[];
 }

@@ -1,3 +1,11 @@
+body {
+  font-size: 20px;
+  font-family: "Roboto", sans-serif;
+  background-color: #fafafa;
+  line-height: 1.5;
+  color: #000;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -10,7 +18,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: black;
 }
 
 /* Sidebar css */
